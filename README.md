@@ -40,3 +40,48 @@ java finalProject.Main -i script.txt -ntc
 
 # Redirezione dell'output su file
 java finalProject.Main -i script.txt -o result.txt
+```
+_____________________________________________________________
+
+# ProgettoLPO_Unige
+# Custom Language Interpreter
+
+A complete interpreter developed in **Java** and **F#** for a custom programming language with support for set operations, static typing, and flow control.
+
+This group project applies advanced concepts of language engineering and object-oriented programming (OOP), starting from the formal definition of the grammar to the dynamic execution of the code.
+
+## System Architecture
+
+The interpreter's architecture is divided into sequential pipelines:
+1. **Lexical Analysis (`Tokenizer`):** Based on Java regex for the tokenization of the source code.
+2. **Syntax Analysis (`Parser`):** An LL(1) *Recursive Descent Parser* that implements an unambiguous EBNF grammar to build the Abstract Syntax Tree (AST).
+3. **Static Semantics (`Typecheck`):** A static type-checker implemented via the **Visitor Pattern** to prevent type errors at compile time.
+4. **Dynamic Semantics (`Execute`):** The runtime execution engine, also based on the Visitor pattern, which manages state transitions and the variable environment (scoping and shadowing).
+
+## Implemented Language Features
+The language supports standard control structures and introduces advanced primitives for set theory:
+* **Primitive Types:** Integers (`int`), Booleans (`bool`), Pairs (`pair`).
+* **Flow Constructs:** `if-else`, `while`, nested blocks, and variable declarations (`var`).
+* **Set Theory:** 
+  * Literal set construction (e.g., `{1}++{2}`)[cite: 10].
+  * Set operations: Union (`++`), Difference (`\`), Membership (`in`), Cardinality (`#`).
+  * *Set Comprehension / Iterators:* Iteration over sets using dedicated constructs (e.g., `{for x in s | x + 1}`).
+
+## Technologies and Design Patterns
+* **Java 24 / Maven:** Main language for implementing the interpreter and AST[cite: 10].
+* **F# / .NET:** Used for the formal and testable definition of static and dynamic semantic rules (`Semantics.fs`).
+* **Design Patterns:** Use of the **Visitor Pattern** to separate AST node classes from type-checking and evaluation logic.
+* **Scope Management:** Implementation of a stack-based Symbol Table (using `LinkedList` and `HashMap`) to manage nested environments and variable lifecycles.
+
+## Compilation and Execution
+The interpreter provides a command-line interface to parse and execute text scripts:
+
+```bash
+# Standard execution with static type-checking
+java finalProject.Main -i script.txt
+
+# Execution ignoring static semantics (No Type-Checking)
+java finalProject.Main -i script.txt -ntc
+
+# Redirect output to a file
+java finalProject.Main -i script.txt -o result.txt
