@@ -1,0 +1,2 @@
+c:\Users\user\Desktop\Uni\2 anno\1 semestre\Linguaggi e programmazione orientata ad oggetti\progetto2025-lpo24-50\semantics\obj\Debug\net8.0\finalProject.AssemblyInfoInputs.cache
+c:\Users\user\Desktop\Uni\2 anno\1 semestre\Linguaggi e programmazione orientata ad oggetti\progetto2025-lpo24-50\semantics\obj\Debug\net8.0\finalProject.AssemblyInfo.fs
